@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReceiptAI Single</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>ReceiptAI Single</h1>
+    <p class="muted">Carica un documento (PDF o testo) → incolla una bozza → verifica → ottieni semaforo + evidenze.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>1) Carica un documento</h2>
+        <label>Titolo</label>
+        <input id="docTitle" value="Policy Supporto" />
+        <label>File (PDF o .txt)</label>
+        <input id="docFile" type="file" />
+        <button id="uploadBtn">Upload</button>
+        <div id="uploadMsg" class="msg"></div>
+
+        <hr />
+        <h3>Documenti indicizzati</h3>
+        <div id="docs" class="chips"></div>
+      </div>
+
+      <div class="card">
+        <h2>2) Verifica una bozza</h2>
+        <label>Policy profile</label>
+        <select id="policy">
+          <option value="default">default</option>
+          <option value="support_it_v1">support_it_v1</option>
+          <option value="sales_v1">sales_v1</option>
+        </select>
+
+        <label>Top K evidenze</label>
+        <input id="topK" type="number" min="1" max="12" value="5" />
+
+        <label>Testo bozza</label>
+        <textarea id="text" rows="10">Scrivi qui una bozza di risposta da verificare...</textarea>
+        <button id="verifyBtn">Verifica</button>
+        <div id="verifyMsg" class="msg"></div>
+      </div>
+    </div>
+
+    <div id="result" class="card hidden">
+      <div class="row">
+        <span id="status" class="chip"></span>
+        <span id="receiptId" class="chip"></span>
+      </div>
+      <hr />
+      <h2>Risposta “sicura”</h2>
+      <pre id="output"></pre>
+      <hr />
+      <h2>Claim & Evidence</h2>
+      <div id="claims" class="stack"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
